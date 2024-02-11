@@ -1,4 +1,7 @@
 <script lang="ts">
+  import HandleFileUpload from "./handle_file_upload.svelte"
+
+  let bytes: Uint8Array
 </script>
 
 <svelte:head>
@@ -14,13 +17,5 @@
     Analyze handwriting
   </h2>
 
-  <div class="w-full my-8">
-    <div class="flex justify-center gap-4">
-      <input
-        type="file"
-        class="file-input file-input-bordered w-full max-w-xs"
-      />
-      <button class="btn btn-primary font-bold">Submit</button>
-    </div>
-  </div>
+  <HandleFileUpload {bytes} />
 </div>
