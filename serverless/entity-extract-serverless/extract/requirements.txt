@@ -1,0 +1,5 @@
+requests
+pydantic>=2.5
+amazon-textract-textractor
+datamodel-code-generator
+pyyaml

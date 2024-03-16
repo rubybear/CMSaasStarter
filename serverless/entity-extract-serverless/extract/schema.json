@@ -1,0 +1,10 @@
+{
+                  "student_name": {"type": "str"},
+                  "current_grade": {"type": "str"},
+                  "age": {"type": "str"},
+                  "dob": {"type": "str"},
+                  "emergency_contat": {
+                    "name": {"type": "str"},
+                    "relationship": {"type": "str"}
+                  }
+}

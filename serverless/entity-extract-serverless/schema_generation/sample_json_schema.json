@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Record of employee",
+    "description": "This document records the details of an employee",
+    "type": "object",
+    "required": [
+        "id",
+        "name"
+    ],
+    "properties": {
+        "id": {
+            "description": "A unique identifier for an employee",
+            "type": "number"
+        },
+        "name": {
+            "description": "Full name of the employee",
+            "type": "string"
+        },
+        "age": {
+            "description": "Age of the employee",
+            "type": "number"
+        },
+        "hobbies": {
+            "description": "Hobbies of the employee",
+            "type": "object",
+            "required": [
+                "indoor",
+                "outdoor"
+            ],
+            "properties": {
+                "indoor": {
+                    "type": "array",
+                    "items": {
+                        "description": "List of indoor hobbies",
+                        "type": "string"
+                    }
+                },
+                "outdoor": {
+                    "type": "array",
+                    "items": {
+                        "description": "List of outdoor hobbies",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
