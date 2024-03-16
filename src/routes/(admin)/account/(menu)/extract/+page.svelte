@@ -6,7 +6,7 @@
 
 <svelte:head>
   <title>Extract</title>
-  <meta name="description" content="Upload a file and tigger an extract" />
+  <meta name="description" content="Upload a file and trigger an extract" />
 </svelte:head>
 
 <div
