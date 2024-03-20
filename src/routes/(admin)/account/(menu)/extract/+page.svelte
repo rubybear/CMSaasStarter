@@ -1,5 +1,5 @@
 <script lang="ts">
-  import HandleFileUpload from "./handle_file_upload.svelte"
+  import HandleFileUpload from "./HandleFileUpload.svelte"
 
   let bytes: Uint8Array
 </script>

@@ -8,8 +8,8 @@
 
   let config = {
     credentials: {
-      accessKeyId: "AKIA6A5YN6FCJAVGHEZL",
-      secretAccessKey: "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",
+      accessKeyId: "-",
+      secretAccessKey: "-+xI",
     },
     region: "us-east-1",
   }

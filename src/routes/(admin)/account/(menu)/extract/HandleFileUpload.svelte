@@ -1,6 +1,6 @@
 <script lang="ts">
-  import AnalyzeDocument from "./analyze_document.svelte"
-  import Bytes from "./bytes.svelte"
+  import AnalyzeDocument from "./AnalyzeDocument.svelte"
+  import Bytes from "./Bytes.svelte"
 
   export let bytes: Uint8Array
 
