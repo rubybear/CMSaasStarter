@@ -1,8 +1,18 @@
 <script>
   /** @type {import('./$types').PageData} */
   export let data
-  let inputs = [{ id: 1, value: "" }]
-  let refs = []
+  let inputs = [{ id: 1, name: "", description: "" }]
+  let labelText = "Section Name"
+
+  function addField() {
+    const newId = inputs.length + 1
+    inputs = [...inputs, { id: newId, name: "", description: "" }]
+  }
+
+  function submitSchema() {
+    // Implement your logic to submit the schema data (inputs array)
+    console.log("Schema submitted:", inputs)
+  }
 </script>
 
 <svelte:head>
@@ -20,17 +30,60 @@
       alt="Movie"
     />
   </figure>
-  <div class="card-body">
+  <div class="card-body p-4 flex flex-col items-stretch gap-4">
     {#each inputs as input (input.id)}
       <div class="flex items-center gap-2">
-        <label class="input input-bordered flex items-center gap-2">
-          <input type="text" class="grow" placeholder="Field Name" bind:value={input.value} />
+        <label class="input input-bordered w-full flex items-center gap-2">
+          <input
+            type="text"
+            class="w-full"
+            placeholder="Section Name"
+            bind:value={input.name}
+          />
         </label>
-        <label class="input input-bordered flex items-center gap-2">
-          <input type="text" class="grow" placeholder="Description" />
+        <label class="input input-bordered w-full flex items-center gap-2">
+          <input
+            type="text"
+            class="w-full"
+            placeholder="Field Name"
+            bind:value={input.name}
+          />
         </label>
-        <button class="btn btn-outline btn-primary">Add Field</button>
+        <label class="input input-bordered w-full flex items-center gap-2">
+          <input
+            type="text"
+            class="w-full"
+            placeholder="Description"
+            bind:value={input.description}
+          />
+          Section Name</label
+        >
       </div>
     {/each}
+    <button class="btn btn-primary" on:click={addField}> Add Field </button>
+    <div>
+      <label
+        for="price"
+        class="block text-sm font-medium leading-6 text-gray-900"
+        >{labelText}</label
+      >
+      <div class="relative mt-2 rounded-md shadow-sm">
+        <input
+          type="text"
+          name="price"
+          id="price"
+          class="input input-bordered w-full flex items-center gap-2"
+          placeholder="Field Name"
+          bind:value={labelText}
+        />
+      </div>
+      <button class="btn btn-primary">Add Field</button>
+    </div>
+    <button
+      class="btn btn-success absolute bottom-4 right-4"
+      on:click={submitSchema}
+    >
+      Submit Schema
+    </button>
   </div>
 </div>
