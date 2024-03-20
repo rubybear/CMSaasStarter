@@ -47,6 +47,9 @@
   // Add a new field to a section
   function addField(sectionIndex: number) {
     const sectionToUpdate = $sections[sectionIndex]
+    if (sectionToUpdate.newFieldName.trim() === "") {
+      return
+    }
     const camelCaseFieldName = sectionToUpdate.newFieldName
       .toLowerCase()
       .split(" ")
@@ -83,44 +86,69 @@
   }
 </script>
 
-<h1>Sections</h1>
-
-<!-- Input for new section -->
-<input
-  class="input input-bordered w-full max-w-xs"
-  type="text"
-  bind:value={newSectionName}
-  placeholder="Enter section name"
-/>
-<button class="btn btn-primary" on:click={addSection}>Add Section</button>
-
-{#each $sections as section, sectionIndex}
+<div>
+  <!-- Input for new section -->
   <div>
-    <h2>{section.name}</h2>
-    <!-- Input for new field -->
-    {#each section.fields as field}
-      <div>
-        <strong>{field.fieldName}</strong>: {field.description}
-      </div>
-    {/each}
-    <input
-      class="input input-bordered w-full max-w-xs"
-      type="text"
-      bind:value={section.newFieldName}
-      placeholder="Enter field name"
-    />
-    <input
-      class="input input-bordered w-full max-w-xs"
-      type="text"
-      bind:value={section.newFieldDescription}
-      placeholder="Enter field description"
-    />
-    <button class="btn btn-primary" on:click={() => addField(sectionIndex)}
-      >Add Field</button
-    >
+    <h3>Sections</h3>
+    <div class="flex space-x-2">
+      <input
+        class="input input-bordered input-sm max-w-xs"
+        type="text"
+        bind:value={newSectionName}
+        placeholder="Enter section name"
+      />
+      <button class="btn btn-outline btn-accent btn-sm" on:click={addSection}
+        >Add Section</button
+      >
+    </div>
   </div>
-{/each}
+
+  {#each $sections as section, sectionIndex}
+    <div class="mt-2">
+      <h3>{section.name}</h3>
+      <!-- Input for new field -->
+      {#each section.fields as field, fieldIndex}
+        <div class="flex space-x-2" key={fieldIndex}>
+          <input
+            class="input input-bordered input-sm max-w-xs"
+            type="text"
+            bind:value={section.fields[fieldIndex].fieldName}
+            placeholder="Enter field name"
+          />
+          <input
+            class="input input-bordered input-sm max-w-xs"
+            type="text"
+            bind:value={section.fields[fieldIndex].description}
+            placeholder="Enter field description"
+          />
+          <button
+            class="btn btn-outline btn-accent btn-sm"
+            on:click={() => addField(sectionIndex)}>Add Field</button
+          >
+        </div>
+      {/each}
+      <div class="flex space-x-2 mt-2">
+        <input
+          class="input input-bordered input-sm max-w-xs"
+          type="text"
+          bind:value={section.newFieldName}
+          placeholder="Enter field name"
+        />
+        <input
+          class="input input-bordered input-sm max-w-xs"
+          type="text"
+          bind:value={section.newFieldDescription}
+          placeholder="Enter field description"
+        />
+        <button
+          class="btn btn-outline btn-accent btn-sm"
+          on:click={() => addField(sectionIndex)}>Add Field</button
+        >
+      </div>
+    </div>
+  {/each}
+</div>
 
 {#if $sections.length > 0 && $sections[0].fields.length > 0}
-  <button class="btn btn-primary" on:click={submitData}>Submit</button>
+  <button class="btn btn-primary btn-sm" on:click={submitData}>Submit</button>
 {/if}
